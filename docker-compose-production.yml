@@ -1,12 +1,12 @@
 version: "3.9"
 services:
     traefik:
-        image: traefik:2.4
+        image: traefik:3.3
         command:
-            --providers.docker=true
-            --providers.docker.watch=true
-            --providers.docker.swarmMode=true
-            --providers.docker.exposedByDefault=false
+            --providers.swarm=true
+            --providers.swarm.watch=true
+            --providers.swarm.exposedByDefault=false
+            --providers.swarm.endpoint=unix:///var/run/docker.sock
             --entryPoints.http.address=:80
             --entryPoints.https.address=:443
             --certificatesresolvers.letsEncrypt.acme.httpChallenge=true
