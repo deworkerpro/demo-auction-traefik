@@ -32,7 +32,7 @@ services:
                 - traefik.enable=true
                 - traefik.docker.network=traefik-public
 
-                - traefik.http.routers.http-catchall.rule=HostRegexp(`{host:.+}`)
+                - traefik.http.routers.http-catchall.rule=HostRegexp(`.+`)
                 - traefik.http.routers.http-catchall.entryPoints=http
                 - traefik.http.routers.http-catchall.middlewares=redirect-to-https
                 - traefik.http.services.http-catchall.loadBalancer.server.port=80
