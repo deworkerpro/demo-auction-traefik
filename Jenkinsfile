@@ -14,6 +14,7 @@ pipeline {
                     string(credentialsId: 'PRODUCTION_PORT', variable: 'PORT'),
                 ]) {
                     sshagent (credentials: ['PRODUCTION_AUTH']) {
+                        sh 'ssh-keyscan -p ${PORT} -H ${HOST} >> ~/.ssh/known_hosts'
                         sh 'make deploy'
                     }
                 }
